@@ -1,0 +1,30 @@
+---
+const {projectName, githubLink, tecnologies} = Astro.props
+---
+
+<style>
+    .project-card {
+        width: calc(50% - 16px);
+    }
+</style>
+
+<div class="flex text-white flex-col rounded-md border-stone-500 project-card p-4 border gap-4 hover:bg-zinc-800 transition duration-300">
+    <div class="flex flex-row justify-between items-center">
+        <p class="font-semibold text-xl">{projectName}</p>
+        <a href={githubLink}>
+            <img src={"github.svg"} class="w-5"/>
+        </a>
+    </div>
+    <div class="flex flex-row gap-4 content-center">
+        <img src={"astro.svg"} class="w-3 sm:w-5"/>
+        <div class="sm:flex flex-row gap-2 content-center hidden">
+        {
+            tecnologies.map((tecnology: string) => (
+                <div class="flex px-3 bg-slate-800 rounded-2xl font-mono text-xs justify-center items-center">
+                    <p>{tecnology}</p>
+                </div>
+            ))
+        }
+        </div>
+    </div>
+</div>

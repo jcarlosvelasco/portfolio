@@ -1,5 +1,7 @@
 ---
 import Item from '../components/Item.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Skill from '../components/Skill.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -52,13 +54,38 @@ import Layout from '../layouts/Layout.astro';
 					altTime="(2019 - 2023)"
 				/>
 			</div>
-		</div>
-		
-		<!-- <div class="w-fit p-4 text-white bg-white bg-opacity-20 rounded-2xl mb-8 flex flex-row gap-2">
-			<p class="opacity-100">About</p>
-			<p class="opacity-100">Work experience</p>
-			<p class="opacity-100">About</p>
-		</div> -->
+
+			<h2 class="text-white font-bold mb-8 text-2xl">Skills</h2>
+			<div class="flex flex-row flex-wrap gap-2 mb-16">
+				<Skill name="SwiftUI"/>
+				<Skill name="Compose"/>
+				<Skill name="React"/>
+				<Skill name="Node.js"/>
+				<Skill name="Typescript"/>
+				<Skill name="Kotlin"/>
+				<Skill name="Java"/>
+			</div>
+
+			<h2 class="text-white font-bold mb-8 text-2xl">Projects</h2>
+			<div class="flex flex-row flex-wrap gap-4">
+				<ProjectCard 
+					projectName="Portfolio" 
+					githubLink="https://github.com/jcarlosvelasco/portfolio"
+					tecnologies={["Astro", "Tailwind"]}
+				/>
+				<ProjectCard 
+					projectName="Portfolio" 
+					githubLink="https://github.com/jcarlosvelasco/portfolio"
+					tecnologies={["Astro", "Tailwind"]}
+				/>
+				<ProjectCard 
+					projectName="Portfolio" 
+					githubLink="https://github.com/jcarlosvelasco/portfolio"
+					tecnologies={["Astro", "Tailwind"]}
+				/>
+			</div>
+			
+		</div>	
 	</div>
 </Layout>
 
