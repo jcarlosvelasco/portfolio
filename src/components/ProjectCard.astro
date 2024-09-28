@@ -1,4 +1,6 @@
 ---
+import ProjectTecnology from "./ProjectTecnology.astro"
+
 const {projectName, githubLink, tecnologies} = Astro.props
 ---
 
@@ -20,9 +22,7 @@ const {projectName, githubLink, tecnologies} = Astro.props
         <div class="sm:flex flex-row gap-2 content-center hidden">
         {
             tecnologies.map((tecnology: string) => (
-                <div class="flex px-3 bg-slate-800 rounded-2xl font-mono text-xs justify-center items-center">
-                    <p>{tecnology}</p>
-                </div>
+                <ProjectTecnology tecnologyName={tecnology}/>
             ))
         }
         </div>
