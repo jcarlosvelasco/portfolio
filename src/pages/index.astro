@@ -2,22 +2,24 @@
 import Item from '../components/Item.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import Skill from '../components/Skill.astro';
+import ThemeIcon from '../components/ThemeIcon.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Portfolio">
 	<div class="flex flex-col items-center w-full">
 		<div class="max-w-3xl pt-8 pb-16 px-8 md:px-0">
-			<div class="flex flex-row">
+			<div class="flex flex-row items-center gap-3 mb-16">
 				<h1 class="text-gradient">Juan Carlos Velasco Sánchez</h1>
+				<ThemeIcon/>
 				<a href="https://www.linkedin.com/in/jcarlosvelasco">
-					<img src="linkedin.svg" class="w-10 mb-16"/>
+					<img src="linkedin.svg" class="w-8"/>
 				</a>
 			</div>
-			<h2 class="text-white mb-4">Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Twitter.</h2>
-			<h2 class="text-white font-bold mb-4 text-2xl">About</h2>
-			<p class="text-white mb-16">At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, I pursued a double degree in computer science and business, interned at big tech companies in Silicon Valley, and competed in over 21 hackathons for fun. I also had the pleasure of being a part of the first ever in-person cohort of buildspace called buildspace sf1.</p>
-			<h2 class="text-white font-bold mb-8 text-2xl">Work experience</h2>
+			<h2 class="mb-4">Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Twitter.</h2>
+			<h2 class="font-bold mb-4 text-2xl">About</h2>
+			<p class=" mb-16">At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, I pursued a double degree in computer science and business, interned at big tech companies in Silicon Valley, and competed in over 21 hackathons for fun. I also had the pleasure of being a part of the first ever in-person cohort of buildspace called buildspace sf1.</p>
+			<h2 class=" font-bold mb-8 text-2xl">Work experience</h2>
 			<div class="flex flex-col gap-6 mb-16">
 				<Item 
 					title="Software Engineer (Intern)" 
@@ -35,7 +37,7 @@ import Layout from '../layouts/Layout.astro';
 				/>
 			</div>
 			
-			<h2 class="text-white font-bold mb-8 text-2xl">Education</h2>
+			<h2 class=" font-bold mb-8 text-2xl">Education</h2>
 			<div class="flex flex-col gap-6 mb-16">
 				<Item
 					subtitle="Universidad Internacional de La Rioja"
@@ -60,7 +62,7 @@ import Layout from '../layouts/Layout.astro';
 				/>
 			</div>
 
-			<h2 class="text-white font-bold mb-8 text-2xl">Skills</h2>
+			<h2 class=" font-bold mb-8 text-2xl">Skills</h2>
 			<div class="flex flex-row flex-wrap gap-2 mb-16">
 				<Skill name="SwiftUI"/>
 				<Skill name="Compose"/>
@@ -71,7 +73,7 @@ import Layout from '../layouts/Layout.astro';
 				<Skill name="Java"/>
 			</div>
 
-			<h2 class="text-white font-bold mb-8 text-2xl">Projects</h2>
+			<h2 class=" font-bold mb-8 text-2xl">Projects</h2>
 			<div class="flex flex-row flex-wrap gap-4">
 				<ProjectCard 
 					projectName="Portfolio" 
@@ -84,6 +86,7 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
+	/*
 	main {
 		margin: auto;
 		padding: 1rem;
@@ -139,5 +142,18 @@ import Layout from '../layouts/Layout.astro';
 		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
 		gap: 2rem;
 		padding: 0;
-	}
+	}*/
+	html.dark {
+  background-color: #1d1d1d;
+  color: #fff;
+}
+
+html {
+	background-color: #fff;
+	color: black
+}
+
+.dark .nav-links a {
+  color: #fff;
+}
 </style>
