@@ -1,7 +1,7 @@
 ---
 import ProjectTecnology from "./ProjectTecnology.astro"
 
-const {projectName, githubLink, tecnologies} = Astro.props
+const {projectName, githubLink, tecnologies, frameworkImage, frameworkLink, frameworkAlt} = Astro.props
 ---
 
 <style>
@@ -18,7 +18,9 @@ const {projectName, githubLink, tecnologies} = Astro.props
         </a>
     </div>
     <div class="flex flex-row gap-4 content-center">
-        <img src={"astro.svg"} class="w-3 sm:w-5"/>
+        <a href={frameworkLink}>
+            <img src={frameworkImage} alt={frameworkAlt} class="w-5 sm:w-5"/>
+        </a>
         <div class="sm:flex flex-row gap-2 content-center hidden">
         {
             tecnologies.map((tecnology: string) => (
