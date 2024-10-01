@@ -11,7 +11,19 @@ const itemCollection = defineCollection({
     })
 });
 
+const projectCollection = defineCollection({
+    schema: z.object({
+        projectName: z.string(),
+        githubLink: z.string(),
+        tecnologies: z.array(z.string()),
+        frameworkImage: z.string(),
+        frameworkLink: z.string(),
+        frameworkAlt: z.string(),
+    })
+});
+
 export const collections = {
-    'education': itemCollection,
+    "education": itemCollection,
     "experience": itemCollection,
+    "projects": projectCollection
 };

@@ -26,6 +26,10 @@ const experienceItems = await getCollection('experience', ({id}) => {
 }).then((items) => {
 	return items.sort((a, b) => b.data.startingDate.getTime() - a.data.startingDate.getTime());	
 });
+
+const projectItems = await getCollection('projects', ({id}) => {
+	return id.startsWith(lang);
+})
 ---
 
 <Layout lang="en" title="Portfolio">
@@ -85,14 +89,18 @@ const experienceItems = await getCollection('experience', ({id}) => {
 
 			<h2 class=" font-bold mb-8 text-2xl">{t("nav.projects")}</h2>
 			<div class="flex flex-row flex-wrap gap-4">
-				<ProjectCard 
-					projectName="Portfolio" 
-					githubLink="https://github.com/jcarlosvelasco/portfolio"
-					tecnologies={["Astro", "Tailwind"]}
-					frameworkImage="astro.svg"
-					frameworkLink="https://astro.build"
-					frameworkAlt="Astro logo"
-				/>
+				{
+					projectItems.map((item) => (
+						<ProjectCard 
+							projectName={item.data.projectName} 
+							githubLink={item.data.githubLink}
+							tecnologies={item.data.tecnologies}
+							frameworkImage={item.data.frameworkImage}
+							frameworkLink={item.data.frameworkLink}
+							frameworkAlt={item.data.frameworkAlt}
+						/>
+					))
+				}
 			</div>
 		</div>	
 	</div>
