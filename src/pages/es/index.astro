@@ -13,10 +13,18 @@ import LanguagePicker from '../../components/LanguagePicker.astro';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 import { getCollection } from 'astro:content';
-import { formatImageSource } from '../../utils';
+import { formatImageSource, skillItems } from '../../utils';
 
 const educationItems = await getCollection('education', ({id}) => {
 	return id.startsWith(lang);
+}).then((items) => {
+	return items.sort((a, b) => b.data.startingDate.getTime() - a.data.startingDate.getTime());	
+});
+
+const experienceItems = await getCollection('experience', ({id}) => {
+	return id.startsWith(lang);
+}).then((items) => {
+	return items.sort((a, b) => b.data.startingDate.getTime() - a.data.startingDate.getTime());	
 });
 ---
 
@@ -36,22 +44,18 @@ const educationItems = await getCollection('education', ({id}) => {
 			<p class=" mb-16">At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, I pursued a double degree in computer science and business, interned at big tech companies in Silicon Valley, and competed in over 21 hackathons for fun. I also had the pleasure of being a part of the first ever in-person cohort of buildspace called buildspace sf1.</p>
 			<h2 class=" font-bold mb-8 text-2xl">{t("nav.experience")}</h2>
 			<div class="flex flex-col gap-6 mb-16">
-				<Item 
-					title="Software Engineer (Intern)" 
-					subtitle="Indra" 
-					imageSource="indra.svg" 
-					time="July 2024 - September 2024"
-					altTime="(2024 - 2024)"
-					altImage="Indra logo"
-				/>
-				<Item 
-					title="Software Engineer (Intern)" 
-					subtitle="NTT Data" 
-					imageSource="nttdata.svg" 
-					time="February 2023 - July 2023"
-					altTime="(2023 - 2023)"
-					altImage="NTT Data logo"
-				/>
+				{
+					experienceItems.map((item) => (
+						<Item
+							subtitle={item.data.subtitle}
+							title={item.data.title}
+							imageSource={formatImageSource(item.data.imageSource)}
+							time={item.data.startingDate.getFullYear() + " - " + item.data.endingDate.getFullYear()}
+							altTime={`(${item.data.startingDate.getFullYear()}-${item.data.endingDate.getFullYear()})`}
+							imageAlt={item.data.imageAlt}
+						/>
+					))
+				}
 			</div>
 			
 			<h2 class=" font-bold mb-8 text-2xl">{t("nav.education")}</h2>
@@ -72,13 +76,11 @@ const educationItems = await getCollection('education', ({id}) => {
 
 			<h2 class=" font-bold mb-8 text-2xl">{t("nav.skills")}</h2>
 			<div class="flex flex-row flex-wrap gap-2 mb-16">
-				<Skill name="SwiftUI"/>
-				<Skill name="Compose"/>
-				<Skill name="React"/>
-				<Skill name="Node.js"/>
-				<Skill name="Typescript"/>
-				<Skill name="Kotlin"/>
-				<Skill name="Java"/>
+				{
+					skillItems.map((item: string) => (
+						<Skill name={item}/>
+					))
+				}
 			</div>
 
 			<h2 class=" font-bold mb-8 text-2xl">{t("nav.projects")}</h2>

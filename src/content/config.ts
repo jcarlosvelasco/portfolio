@@ -13,4 +13,5 @@ const itemCollection = defineCollection({
 
 export const collections = {
     'education': itemCollection,
+    "experience": itemCollection,
 };
