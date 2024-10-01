@@ -3,9 +3,13 @@ import ProjectTecnology from "./ProjectTecnology.astro"
 import { Image } from 'astro:assets';
 
 import github from '../../src/assets/github.svg';
+import astro from '../../src/assets/astro.svg';
 
 const {projectName, githubLink, tecnologies, frameworkImage, frameworkLink, frameworkAlt} = Astro.props
-const assetsFolder = "../../src/assets/";
+
+const images: Record<string, ImageMetadata> = {
+    "astro.svg": astro
+};
 ---
 
 <style>
@@ -23,7 +27,7 @@ const assetsFolder = "../../src/assets/";
     </div>
     <div class="flex flex-row gap-4 content-center">
         <a href={frameworkLink}>
-            <img src=`${assetsFolder}${frameworkImage}` alt={frameworkAlt} class="w-5 sm:w-5"/>
+            {images[frameworkImage] && <Image src={images[frameworkImage]} class="w-5" alt={frameworkAlt} />}
         </a>
         <div class="sm:flex flex-row gap-2 content-center hidden">
         {
