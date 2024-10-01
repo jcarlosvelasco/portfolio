@@ -26,6 +26,10 @@ const experienceItems = await getCollection('experience', ({id}) => {
 }).then((items) => {
 	return items.sort((a, b) => b.data.startingDate.getTime() - a.data.startingDate.getTime());	
 });
+
+const projectItems = await getCollection('projects', ({id}) => {
+	return id.startsWith(lang);
+})
 ---
 
 <Layout lang="es" title="Portfolio">
