@@ -8,6 +8,7 @@ import ProjectCard from './ProjectCard.astro';
 import Skill from './Skill.astro';
 import ThemeIcon from './ThemeIcon.astro';
 import Timeline from './Timeline.astro';
+import Heading from './Heading.astro';
 
 const { lang, t, educationItems, experienceItems, projectItems, getMonth } = Astro.props;
 ---
@@ -30,13 +31,13 @@ const { lang, t, educationItems, experienceItems, projectItems, getMonth } = Ast
             <h1 class="font-bold text-4xl mb-2">{t('nav.hero')}</h1>
             <h2 class="mb-12 sm:mb-16">{t('nav.heading')}</h2>
             
-            <h2 class="font-bold mb-6 text-2xl">{t("nav.experience")}</h2>
+            <Heading title={t("nav.experience")}/>
             <Timeline items={experienceItems} getMonth={getMonth} fullTime={false}/>
             
-            <h2 class="font-bold mb-6 text-2xl">{t("nav.education")}</h2>
+            <Heading title={t("nav.education")}/>
             <Timeline items={educationItems} getMonth={getMonth} fullTime={true}/>
 
-            <h2 class="font-bold mb-6 text-2xl">{t("nav.skills")}</h2>
+            <Heading title={t("nav.skills")}/>
             <div class="flex flex-row flex-wrap gap-2 mb-12 sm:mb-16">
                 {
                     skillItems.map((item: string) => (
@@ -45,7 +46,7 @@ const { lang, t, educationItems, experienceItems, projectItems, getMonth } = Ast
                 }
             </div>
 
-            <h2 class="font-bold mb-6 text-2xl">{t("nav.projects")}</h2>
+            <Heading title={t("nav.projects")}/>
             <div class="flex flex-row flex-wrap gap-4">
                 {
                     projectItems.map((item: any) => (

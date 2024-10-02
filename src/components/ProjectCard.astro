@@ -22,10 +22,10 @@ const images: Record<string, { dark: ImageMetadata, light: ImageMetadata }> = {
 
 <div class="flex flex-col bg-black bg-opacity-5 rounded-md border-stone-500 project-card p-4 border gap-4 hover:bg-neutral-300 dark:hover:bg-zinc-800 transition duration-300">
     <div class="flex flex-row justify-between items-center">
-        <p class="font-semibold text-xl">{projectName}</p>
+        <p class="font-semibold text-lg sm:text-xl">{projectName}</p>
         <a href={githubLink}>
-            <Image src={github_dark} alt="Github" class="w-5 hidden dark:block"/>
-            <Image src={github_white} alt="Github" class="w-5 dark:hidden"/>
+            <Image src={github_dark} alt="Github" class="w-5 sm:w-6 hidden dark:block"/>
+            <Image src={github_white} alt="Github" class="w-5 sm:w-6 dark:hidden"/>
         </a>
     </div>
     <div class="flex flex-row gap-4 content-center">
@@ -37,7 +37,7 @@ const images: Record<string, { dark: ImageMetadata, light: ImageMetadata }> = {
                 </>
             )}
         </a>
-        <div class="sm:flex flex-row gap-2 content-center hidden">
+        <div class="flex flex-row gap-2 content-center">
         {
             tecnologies.map((tecnology: string) => (
                 <ProjectTecnology tecnologyName={tecnology}/>

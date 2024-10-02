@@ -1,5 +1,5 @@
 ---
-title: Master Universitario en Inteligencia Artificial
+title: Máster Universitario en Inteligencia Artificial
 subtitle: Universidad Internacional de La Rioja
 startingDate: 2024-09-01
 endingDate: 2025-06-30
