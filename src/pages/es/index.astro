@@ -3,7 +3,7 @@ import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 import { getCollection } from 'astro:content';
-import SharedIndex from '../../components/sharedIndex.astro';
+import SharedIndex from '../../components/SharedIndex.astro';
 
 const educationItems = await getCollection('education', ({id}) => {
 	return id.startsWith(lang);
