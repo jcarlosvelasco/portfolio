@@ -2,13 +2,15 @@
 import ProjectTecnology from "./ProjectTecnology.astro"
 import { Image } from 'astro:assets';
 
-import github from '../../src/assets/github.svg';
-import astro from '../../src/assets/astro.svg';
+import github_dark from '../../src/assets/github_darkMode.svg';
+import github_white from '../../src/assets/github_whiteMode.svg';
+import astro_dark from '../../src/assets/astro_darkMode.svg';
+import astro_white from '../../src/assets/astro_whiteMode.svg';
 
 const {projectName, githubLink, tecnologies, frameworkImage, frameworkLink, frameworkAlt} = Astro.props
 
-const images: Record<string, ImageMetadata> = {
-    "astro.svg": astro
+const images: Record<string, { dark: ImageMetadata, light: ImageMetadata }> = {
+    "astro.svg": { dark: astro_dark, light: astro_white }
 };
 ---
 
@@ -18,16 +20,22 @@ const images: Record<string, ImageMetadata> = {
     }
 </style>
 
-<div class="flex flex-col bg-black bg-opacity-20 rounded-md border-stone-500 project-card p-4 border gap-4 hover:bg-slate-400 dark:hover:bg-zinc-800 transition duration-300">
+<div class="flex flex-col bg-black bg-opacity-5 rounded-md border-stone-500 project-card p-4 border gap-4 hover:bg-neutral-300 dark:hover:bg-zinc-800 transition duration-300">
     <div class="flex flex-row justify-between items-center">
         <p class="font-semibold text-xl">{projectName}</p>
         <a href={githubLink}>
-            <Image src={github} alt="Github" class="w-5"/>
+            <Image src={github_dark} alt="Github" class="w-5 hidden dark:block"/>
+            <Image src={github_white} alt="Github" class="w-5 dark:hidden"/>
         </a>
     </div>
     <div class="flex flex-row gap-4 content-center">
         <a href={frameworkLink}>
-            {images[frameworkImage] && <Image src={images[frameworkImage]} class="w-5" alt={frameworkAlt} />}
+            {images[frameworkImage] && (
+                <>
+                    <Image src={images[frameworkImage].light} class="w-5 dark:hidden" alt={frameworkAlt} />
+                    <Image src={images[frameworkImage].dark} class="w-5 hidden dark:block" alt={frameworkAlt} />
+                </>
+            )}
         </a>
         <div class="sm:flex flex-row gap-2 content-center hidden">
         {
