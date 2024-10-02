@@ -5,11 +5,9 @@ import linkedin_white from '../assets/linkedin_whiteMode.svg';
 import Layout from '../layouts/Layout.astro';
 import { formatImageSource, skillItems } from '../utils';
 import Item from './Item.astro';
-import LanguagePicker from './LanguagePicker.astro';
 import ProjectCard from './ProjectCard.astro';
 import Skill from './Skill.astro';
 import ThemeIcon from './ThemeIcon.astro';
-
 
 const { lang, t, educationItems, experienceItems, projectItems, getMonth } = Astro.props;
 ---
@@ -24,7 +22,9 @@ const { lang, t, educationItems, experienceItems, projectItems, getMonth } = Ast
                         <Image src={linkedin_white} class="w-8 dark:hidden" alt="LinkedIn logo"/>
                         <Image src={linkedin_dark} class="w-8 hidden dark:block" alt="LinkedIn logo"/>
                     </a>
-                    <LanguagePicker/>
+                    {
+                        lang === 'es' ? <a href="/en">English</a> : <a href="/es">Español</a>
+                    }
                 </div>
             </div>
             <h1 class="font-bold text-4xl mb-2">{t('nav.hero')}</h1>
