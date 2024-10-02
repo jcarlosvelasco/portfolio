@@ -1,0 +1,107 @@
+---
+import { Image } from 'astro:assets';
+import linkedin_dark from '../assets/linkedin_darkMode.svg';
+import linkedin_white from '../assets/linkedin_whiteMode.svg';
+import Layout from '../layouts/Layout.astro';
+import { formatImageSource, skillItems } from '../utils';
+import Item from './Item.astro';
+import LanguagePicker from './LanguagePicker.astro';
+import ProjectCard from './ProjectCard.astro';
+import Skill from './Skill.astro';
+import ThemeIcon from './ThemeIcon.astro';
+
+
+const { lang, t, educationItems, experienceItems, projectItems, getMonth } = Astro.props;
+---
+
+<Layout lang={lang} title="Portfolio">
+    <div class="flex flex-col items-center w-full">
+        <div class="max-w-3xl pt-8 pb-16 px-8 md:px-0">
+            <div class="flex flex-row items-center mb-16 justify-between">
+                <div class="flex flex-row gap-4 items-center">
+                    <ThemeIcon/>
+                    <a href="https://www.linkedin.com/in/jcarlosvelasco">
+                        <Image src={linkedin_white} class="w-8 dark:hidden" alt="LinkedIn logo"/>
+                        <Image src={linkedin_dark} class="w-8 hidden dark:block" alt="LinkedIn logo"/>
+                    </a>
+                    <LanguagePicker/>
+                </div>
+            </div>
+            <h1 class="font-bold text-4xl mb-2">{t('nav.hero')}</h1>
+            <h2 class="mb-16">{t('nav.heading')}</h2>
+            
+            <h2 class=" font-bold mb-6 text-2xl">{t("nav.experience")}</h2>
+            <div class="flex flex-col gap-6 mb-16">
+                {
+                    experienceItems.map((item: any) => (
+                        <Item
+                            subtitle={item.data.subtitle}
+                            title={item.data.title}
+                            imageSource={formatImageSource(item.data.imageSource)}
+                            time={`${getMonth(item.data.startingDate.getMonth())} ${item.data.startingDate.getFullYear()} - ${getMonth(item.data.endingDate.getMonth())} ${item.data.endingDate.getFullYear()}`}
+                            altTime={`(${item.data.startingDate.getFullYear()}-${item.data.endingDate.getFullYear()})`}
+                            imageAlt={item.data.imageAlt}
+                        />
+                    ))
+                }
+            </div>
+            
+            <h2 class=" font-bold mb-6 text-2xl">{t("nav.education")}</h2>
+            <div class="flex flex-col gap-6 mb-16">
+                {
+                    educationItems.map((item: any) => (
+                        <Item
+                            subtitle={item.data.subtitle}
+                            title={item.data.title}
+                            imageSource={formatImageSource(item.data.imageSource)}
+                            time={item.data.startingDate.getFullYear() + " - " + item.data.endingDate.getFullYear()}
+                            altTime={`(${item.data.startingDate.getFullYear()}-${item.data.endingDate.getFullYear()})`}
+                            imageAlt={item.data.imageAlt}
+                        />
+                    ))
+                }
+            </div>
+
+            <h2 class=" font-bold mb-6 text-2xl">{t("nav.skills")}</h2>
+            <div class="flex flex-row flex-wrap gap-2 mb-16">
+                {
+                    skillItems.map((item: string) => (
+                        <Skill name={item}/>
+                    ))
+                }
+            </div>
+
+            <h2 class=" font-bold mb-6 text-2xl">{t("nav.projects")}</h2>
+            <div class="flex flex-row flex-wrap gap-4">
+                {
+                    projectItems.map((item: any) => (
+                        <ProjectCard 
+                            projectName={item.data.projectName} 
+                            githubLink={item.data.githubLink}
+                            tecnologies={item.data.tecnologies}
+                            frameworkImage={item.data.frameworkImage}
+                            frameworkLink={item.data.frameworkLink}
+                            frameworkAlt={item.data.frameworkAlt}
+                        />
+                    ))
+                }
+            </div>
+        </div>	
+    </div>
+</Layout>
+
+<style>
+    html.dark {
+          background-color: #1d1d1d;
+          color: #fff;
+    }
+
+    html {
+        background-color: #fff;
+        color: black
+    }
+
+    .dark .nav-links a {
+          color: #fff;
+    }
+</style>
