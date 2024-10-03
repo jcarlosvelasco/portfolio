@@ -2,16 +2,17 @@
 import "@fontsource-variable/onest"
 import Background from "../components/Background.astro";
 
+const description = "jcarlosvelasco's Portfolio - See my projects, blog posts, and more!";
 ---
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={description}/>
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>Portfolio</title>
+    <title>jcarlosvelasco's Portfolio | Sofware Engineer</title>
   </head>
   <body>
     <Background />

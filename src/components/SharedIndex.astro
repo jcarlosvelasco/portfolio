@@ -35,8 +35,8 @@ const [educationItems, experienceItems, projectItems] = await Promise.all([
                 <div class="flex flex-row gap-4 items-center">
                     <ThemeIcon/>
                     <a href="https://www.linkedin.com/in/jcarlosvelasco">
-                        <Image src={linkedin_white} class="w-8 dark:hidden" alt="LinkedIn logo"/>
-                        <Image src={linkedin_dark} class="w-8 hidden dark:block" alt="LinkedIn logo"/>
+                        <Image loading={'eager'} src={linkedin_white} class="w-8 dark:hidden" alt="LinkedIn logo"/>
+                        <Image loading={'eager'} src={linkedin_dark} class="w-8 hidden dark:block" alt="LinkedIn logo"/>
                     </a>
                     {
                         lang === 'es' ? <a href="/en">English</a> : <a href="/es">Español</a>

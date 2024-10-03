@@ -6,6 +6,7 @@ import github_dark from '../../src/assets/github_darkMode.svg';
 import github_white from '../../src/assets/github_whiteMode.svg';
 import astro_dark from '../../src/assets/astro_darkMode.svg';
 import astro_white from '../../src/assets/astro_whiteMode.svg';
+import { lazy } from "astro:schema";
 
 const {projectName, githubLink, tecnologies, frameworkImage, frameworkLink, frameworkAlt} = Astro.props
 
@@ -24,16 +25,16 @@ const images: Record<string, { dark: ImageMetadata, light: ImageMetadata }> = {
     <div class="flex flex-row justify-between items-center">
         <p class="font-semibold text-lg sm:text-xl">{projectName}</p>
         <a href={githubLink}>
-            <Image src={github_dark} alt="Github" class="w-5 sm:w-6 hidden dark:block"/>
-            <Image src={github_white} alt="Github" class="w-5 sm:w-6 dark:hidden"/>
+            <Image loading={"lazy"} src={github_dark} alt="Github" class="w-5 sm:w-6 hidden dark:block"/>
+            <Image loading={"lazy"} src={github_white} alt="Github" class="w-5 sm:w-6 dark:hidden"/>
         </a>
     </div>
     <div class="flex flex-row gap-4 content-center">
         <a href={frameworkLink}>
             {images[frameworkImage] && (
                 <>
-                    <Image src={images[frameworkImage].light} class="w-5 dark:hidden" alt={frameworkAlt} />
-                    <Image src={images[frameworkImage].dark} class="w-5 hidden dark:block" alt={frameworkAlt} />
+                    <Image loading={"lazy"} src={images[frameworkImage].light} class="w-5 dark:hidden" alt={frameworkAlt} />
+                    <Image loading={"lazy"} src={images[frameworkImage].dark} class="w-5 hidden dark:block" alt={frameworkAlt} />
                 </>
             )}
         </a>
