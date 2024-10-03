@@ -11,7 +11,11 @@ import Timeline from './Timeline.astro';
 import Heading from './Heading.astro';
 import { getCollection } from 'astro:content';
 
-const { lang, t, getMonth } = Astro.props;
+const { lang, t, months } = Astro.props;
+
+function getMonth(monthNumber: number): string {
+    return months[monthNumber];
+}
 
 const [educationItems, experienceItems, projectItems] = await Promise.all([
     getCollection('education', ({id}) => id.startsWith(lang)).then((items) => {

@@ -4,14 +4,9 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 import SharedIndex from '../../components/SharedIndex.astro';
 
-function getMonth(monthNumber: number): string {
-    const months: string[] = [
-        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-    ];
-
-    return months[monthNumber];
-}
+const months: string[] = [
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+];
 ---
-
-<SharedIndex {lang} {t} {getMonth} />
+<SharedIndex {lang} {t} {months} />
