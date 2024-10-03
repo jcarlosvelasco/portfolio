@@ -2,24 +2,7 @@
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-import { getCollection } from 'astro:content';
 import SharedIndex from '../../components/SharedIndex.astro';
-
-const educationItems = await getCollection('education', ({id}) => {
-	return id.startsWith(lang);
-}).then((items) => {
-	return items.sort((a, b) => b.data.startingDate.getTime() - a.data.startingDate.getTime());	
-});
-
-const experienceItems = await getCollection('experience', ({id}) => {
-	return id.startsWith(lang);
-}).then((items) => {
-	return items.sort((a, b) => b.data.startingDate.getTime() - a.data.startingDate.getTime());	
-});
-
-const projectItems = await getCollection('projects', ({id}) => {
-	return id.startsWith(lang);
-})
 
 function getMonth(monthNumber: number): string {
     const months: string[] = [
@@ -31,4 +14,4 @@ function getMonth(monthNumber: number): string {
 }
 ---
 
-<SharedIndex {lang} {t} {educationItems} {experienceItems} {projectItems} {getMonth} />
+<SharedIndex {lang} {t} {getMonth} />

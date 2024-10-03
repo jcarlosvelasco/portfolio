@@ -9,8 +9,19 @@ import Skill from './Skill.astro';
 import ThemeIcon from './ThemeIcon.astro';
 import Timeline from './Timeline.astro';
 import Heading from './Heading.astro';
+import { getCollection } from 'astro:content';
 
-const { lang, t, educationItems, experienceItems, projectItems, getMonth } = Astro.props;
+const { lang, t, getMonth } = Astro.props;
+
+const [educationItems, experienceItems, projectItems] = await Promise.all([
+    getCollection('education', ({id}) => id.startsWith(lang)).then((items) => {
+        return items.sort((a, b) => b.data.startingDate.getTime() - a.data.startingDate.getTime());
+    }),
+    getCollection('experience', ({id}) => id.startsWith(lang)).then((items) => {
+        return items.sort((a, b) => b.data.startingDate.getTime() - a.data.startingDate.getTime());
+    }),
+    getCollection('projects', ({id}) => id.startsWith(lang))
+]);
 ---
 
 <Layout lang={lang} title="Portfolio">
