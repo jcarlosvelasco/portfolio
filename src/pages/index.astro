@@ -1,5 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const country = Astro.request.headers.get("X-Vercel-IP-Country");
+
+const spanishSpeakingCountryCodes = ["ES", "MX", "AR", "CO", "CL", "PE", "VE", "EC", "GT", "CU", "BO", "DO", "HN", "PY", "SV", "NI", "CR", "UY", "PA", "GQ", "PR"];
+const lang = country != null && spanishSpeakingCountryCodes.includes(country) ? "es" : "en";
 ---
 
-<Layout lang="en" title="Portfolio"/>
+<Layout lang={lang} title="Portfolio"/>
