@@ -4,6 +4,22 @@ import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+const spanishSpeakingCountries = ["ES", "MX", "AR", "CO", "CL", "PE", "VE", "EC", "GT", "CU", "BO", "DO", "HN", "PY", "SV", "NI", "CR", "PR", "UY", "PA", "GQ"];
+
+let countryCode = Astro.request.headers.get("X-Vercel-IP-Country");
+
+if (!countryCode) {
+    const acceptLanguage = Astro.request.headers.get("Accept-Language");
+    countryCode = acceptLanguage?.split(",")[0]?.split("-")[1] ?? null;
+}
+
+const language = countryCode && spanishSpeakingCountries.includes(countryCode) ? "es" : "en";
+
+if (language === 'es') {
+    console.log("Entra por aquí")
+    EAstro.redirect('/es');
+}
+
 function getMonth(monthNumber: number): string {
     const months: string[] = [
         "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"

@@ -1,54 +1,65 @@
 ---
-const {language, title} = Astro.props;
 import "@fontsource-variable/onest"
 import Background from "../components/Background.astro";
+
+// Definir el título del documento
+const title = "Portfolio";
+
+// Definir los países de habla hispana
+const spanishSpeakingCountries = ["ES", "MX", "AR", "CO", "CL", "PE", "VE", "EC", "GT", "CU", "BO", "DO", "HN", "PY", "SV", "NI", "CR", "PR", "UY", "PA", "GQ"];
+
+// Obtener el código del país de las cabeceras (priorizando `X-Vercel-IP-Country` y luego `Accept-Language`)
+let countryCode = Astro.request.headers.get("X-Vercel-IP-Country");
+
+// Si no tenemos el país, usamos el primer idioma de `Accept-Language` y extraemos el código del país
+if (!countryCode) {
+  const acceptLanguage = Astro.request.headers.get("Accept-Language");
+  countryCode = acceptLanguage?.split(",")[0]?.split("-")[1] ?? null;
+}
+
+// Definir el idioma según el país o usar "en" por defecto
+const language = countryCode && spanishSpeakingCountries.includes(countryCode) ? "es" : "en";
+
+// Evitar redirección infinita si ya estamos en la URL correcta
+if (Astro.url.pathname === '/' && language === 'es') {
+  Astro.redirect("/es");
+} else if (Astro.url.pathname === '/es' && language === 'en') {
+  Astro.redirect("/en");
+}
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang={language}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-	<Background />
-	<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Background />
+    <slot />
+  </body>
 </html>
+
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html, body {
-        height: 100vh;
-        margin: 0;
-    }
-	html {
-		font-family: Onest Variable, system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Onest Variable,
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  :root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
+  }
+  html, body {
+    height: 100vh;
+    margin: 0;
+  }
+  html {
+    font-family: Onest Variable, system-ui, sans-serif;
+    background: #13151a;
+  }
+  code {
+    font-family: Onest Variable, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  }
 </style>
