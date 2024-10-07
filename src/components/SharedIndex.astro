@@ -30,8 +30,8 @@ const [educationItems, experienceItems, projectItems] = await Promise.all([
 
 <Layout>
     <div class="flex flex-col items-center w-full">
-        <div class="max-w-3xl pt-8 pb-16 px-8 md:px-0">
-            <div class="flex flex-row items-center mb-16 justify-between">
+        <div class="max-w-3xl pt-8 pb-16 px-8 md:px-0 w-full">
+            <div class="flex flex-row items-center mb-16 justify-between w-full">
                 <div class="flex flex-row gap-4 items-center">
                     <ThemeIcon/>
                     <a href="https://www.linkedin.com/in/jcarlosvelasco">
@@ -89,10 +89,14 @@ const [educationItems, experienceItems, projectItems] = await Promise.all([
 
     html {
         background-color: #fff;
-        color: black
+        color: black;
     }
 
     .dark .nav-links a {
         color: #fff;
+    }
+
+    .overflow-x-scroll {
+        overflow-x: auto;
     }
 </style>

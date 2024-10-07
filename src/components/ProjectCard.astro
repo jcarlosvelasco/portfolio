@@ -18,11 +18,14 @@ const images: Record<string, { dark: ImageMetadata, light: ImageMetadata }> = {
 
 <style>
     .project-card {
-        @apply sm:w-[calc(50%-16px)] w-full;
+        @apply sm:w-[calc(50%-16px)] w-full max-w-full;
     }
     .framework-image {
         object-fit: contain;
         object-position: left;
+    }
+    .overflow-x-scroll {
+        overflow-x: auto;
     }
 </style>
 
