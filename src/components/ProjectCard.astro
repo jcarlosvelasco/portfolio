@@ -6,17 +6,23 @@ import github_dark from '../../src/assets/github_darkMode.svg';
 import github_white from '../../src/assets/github_whiteMode.svg';
 import astro_dark from '../../src/assets/astro_darkMode.svg';
 import astro_white from '../../src/assets/astro_whiteMode.svg';
+import swiftui from '../../src/assets/swiftui.svg';
 
-const {projectName, githubLink, tecnologies, frameworkImage, frameworkLink, frameworkAlt} = Astro.props
+const {projectName, githubLink, tecnologies, frameworkImage, frameworkLink, frameworkAlt, description} = Astro.props
 
 const images: Record<string, { dark: ImageMetadata, light: ImageMetadata }> = {
-    "astro.svg": { dark: astro_dark, light: astro_white }
+    "astro.svg": { dark: astro_dark, light: astro_white },
+    "swiftui.svg": { dark: swiftui, light: swiftui }
 };
 ---
 
 <style>
     .project-card {
         @apply sm:w-[calc(50%-16px)] w-full;
+    }
+    .framework-image {
+        object-fit: contain;
+        object-position: left;
     }
 </style>
 
@@ -28,16 +34,17 @@ const images: Record<string, { dark: ImageMetadata, light: ImageMetadata }> = {
             <Image loading={"lazy"} src={github_white} alt="Github" class="w-5 sm:w-6 dark:hidden"/>
         </a>
     </div>
-    <div class="flex flex-row gap-4 content-center">
+    <p class="text-gray-500 dark:text-gray-400 text-sm sm:text-base mb-auto">{description}</p>
+    <div class="flex flex-row gap-4 content-center h-8">
         <a href={frameworkLink}>
             {images[frameworkImage] && (
                 <>
-                    <Image loading={"lazy"} src={images[frameworkImage].light} class="w-5 dark:hidden" alt={frameworkAlt} />
-                    <Image loading={"lazy"} src={images[frameworkImage].dark} class="w-5 hidden dark:block" alt={frameworkAlt} />
+                    <Image loading={"lazy"} src={images[frameworkImage].light} class="h-full dark:hidden framework-image w-fit" alt={frameworkAlt} />
+                    <Image loading={"lazy"} src={images[frameworkImage].dark} class="h-full hidden dark:block framework-image w-fit" alt={frameworkAlt} />
                 </>
             )}
         </a>
-        <div class="flex flex-row gap-2 content-center">
+        <div class="flex flex-row gap-2 content-center overflow-x-scroll">
         {
             tecnologies.map((tecnology: string) => (
                 <ProjectTecnology tecnologyName={tecnology}/>

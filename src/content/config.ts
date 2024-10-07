@@ -14,6 +14,7 @@ const itemCollection = defineCollection({
 const projectCollection = defineCollection({
     schema: z.object({
         projectName: z.string(),
+        description: z.string(),
         githubLink: z.string(),
         tecnologies: z.array(z.string()),
         frameworkImage: z.string(),
