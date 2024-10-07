@@ -13,7 +13,8 @@ export const ui = {
         "nav.education": "Education",
         "nav.skills": "Skills",
         "nav.projects": "Projects",
-        "nav.hero": "Hi, I'm Juan Carlos"
+        "nav.hero": "Hi, I'm Juan Carlos",
+        "actualJob": "Current job"
     },
     es: {
         'nav.heading': 'Ingeniero de Software en Salamanca, España. Me apasiona construir aplicaciones y sitios web.',
@@ -22,6 +23,7 @@ export const ui = {
         "nav.education": "Educación",
         "nav.skills": "Habilidades",
         "nav.projects": "Proyectos",
-        "nav.hero": "Hola, soy Juan Carlos"
+        "nav.hero": "Hola, soy Juan Carlos",
+        "actualJob": "Trabajo actual"
     },
 } as const;

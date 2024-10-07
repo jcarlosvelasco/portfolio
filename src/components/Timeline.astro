@@ -1,7 +1,7 @@
 ---
 import { formatImageSource } from "../utils"
 import TimelineItem from "./TimelineItem.astro"
-const {items, getMonth, fullTime} = Astro.props
+const {items, getMonth, fullTime, t} = Astro.props
 ---
 <div class="after:absolute after:inset-y-0 after:w-px after:bg-gray-500/20 relative pl-6 after:left-0 grid gap-10 dark:after:bg-gray-400/20 mb-12 sm:mb-16">
     {
@@ -13,6 +13,8 @@ const {items, getMonth, fullTime} = Astro.props
 				time={fullTime ? `${item.data.startingDate.getFullYear()}-${item.data.endingDate.getFullYear()}` : `${getMonth(item.data.startingDate.getMonth())} ${item.data.startingDate.getFullYear()} - ${getMonth(item.data.endingDate.getMonth())} ${item.data.endingDate.getFullYear()}`}
 				altTime={`(${item.data.startingDate.getFullYear()}-${item.data.endingDate.getFullYear()})`}
 				imageAlt={item.data.imageAlt}
+				actualJob={item.data.actualJob}
+				translation={t}
 			/>
 		))
 	}

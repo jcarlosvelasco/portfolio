@@ -26,6 +26,10 @@ const [educationItems, experienceItems, projectItems] = await Promise.all([
     }),
     getCollection('projects', ({id}) => id.startsWith(lang))
 ]);
+
+const translations = {
+    actualJob: t("actualJob")
+};
 ---
 
 <Layout>
@@ -47,7 +51,7 @@ const [educationItems, experienceItems, projectItems] = await Promise.all([
             <h2 class="mb-12 sm:mb-16">{t('nav.heading')}</h2>
             
             <Heading title={t("nav.experience")}/>
-            <Timeline items={experienceItems} getMonth={getMonth} fullTime={false}/>
+            <Timeline items={experienceItems} getMonth={getMonth} fullTime={false} t={translations.actualJob}/>
             
             <Heading title={t("nav.education")}/>
             <Timeline items={educationItems} getMonth={getMonth} fullTime={true}/>

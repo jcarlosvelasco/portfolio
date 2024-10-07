@@ -1,5 +1,5 @@
 ---
-const { subtitle, title, imageSource, time, altTime, imageAlt} = Astro.props;
+const { subtitle, title, imageSource, time, altTime, imageAlt, actualJob, translation } = Astro.props;
 import { Image } from "astro:assets";
 import indra from "../../src/assets/indra.svg";
 import usal from "../../src/assets/usal.svg";
@@ -25,9 +25,9 @@ const images: Record<string, ImageMetadata> = {
         <div class="flex flex-col">
             <div class="aspect-square w-3 bg-gray-900 rounded-full absolute left-0 translate-x-[-29.5px] translate-y-[-50%] z-10 top-1/2 dark:bg-gray-50" />           
             <div class="font-semibold text-lg sm:text-xl line-clamp-1">{title}</div>
-            <div class="text-gray-500 dark:text-gray-400 text-sm sm:hidden">{`${subtitle} ${altTime}`}</div>
+            <div class="text-gray-500 dark:text-gray-400 text-sm sm:hidden">{`${subtitle} ${actualJob === true ? `(${translation})` : altTime}`}</div>
             <div class="text-gray-500 dark:text-gray-400 text-base sm:block hidden">{subtitle}</div>
         </div>
-        <div class="text-sm line-clamp-1 hidden sm:block">{time}</div>
+        <div class="text-sm line-clamp-1 hidden sm:block">{actualJob === true ? translation : time}</div>
     </div>
 </div>
