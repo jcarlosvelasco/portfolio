@@ -1,0 +1,17 @@
+---
+import { formatImageSource } from "../utils"
+import AwardTimelineItem from "./AwardTimelineItem.astro"
+const {items} = Astro.props
+---
+<div class="after:absolute after:inset-y-0 after:w-px after:bg-gray-500/20 relative pl-6 after:left-0 grid gap-10 dark:after:bg-gray-400/20 mb-12 sm:mb-16">
+    {
+		items.map((item: any) => (
+			<AwardTimelineItem 
+				subtitle={item.data.subtitle}
+				title={item.data.title}
+				imageSource={formatImageSource(item.data.imageSource)}
+				imageAlt={item.data.imageAlt}
+			/>
+		))
+	}
+</div>

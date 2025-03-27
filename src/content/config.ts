@@ -35,8 +35,20 @@ const projectCollection = defineCollection({
     })
 });
 
+const awardCollection = defineCollection({
+    schema: z.object({
+        title: z.string(),
+        subtitle: z.string(),
+        imageSource: z.string(),
+        imageAlt: z.string(),
+        date: z.date(),
+    })
+});
+
+
 export const collections = {
     "education": itemCollection,
     "experience": jobCollection,
-    "projects": projectCollection
+    "projects": projectCollection,
+    "awards": awardCollection
 };

@@ -10,6 +10,7 @@ import ThemeIcon from './ThemeIcon.astro';
 import Timeline from './Timeline.astro';
 import Heading from './Heading.astro';
 import { getCollection } from 'astro:content';
+import AwardTimeline from './AwardTimeline.astro';
 
 const { lang, t, months } = Astro.props;
 
@@ -17,14 +18,17 @@ function getMonth(monthNumber: number): string {
     return months[monthNumber];
 }
 
-const [educationItems, experienceItems, projectItems] = await Promise.all([
+const [educationItems, experienceItems, projectItems, awardItems] = await Promise.all([
     getCollection('education', ({id}) => id.startsWith(lang)).then((items) => {
         return items.sort((a, b) => b.data.startingDate.getTime() - a.data.startingDate.getTime());
     }),
     getCollection('experience', ({id}) => id.startsWith(lang)).then((items) => {
         return items.sort((a, b) => b.data.startingDate.getTime() - a.data.startingDate.getTime());
     }),
-    getCollection('projects', ({id}) => id.startsWith(lang))
+    getCollection('projects', ({id}) => id.startsWith(lang)),
+    getCollection('awards', ({id}) => id.startsWith(lang)).then((items) => {
+        return items.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+    }),
 ]);
 
 const translations = {
@@ -55,6 +59,12 @@ const translations = {
             
             <Heading title={t("nav.education")}/>
             <Timeline items={educationItems} getMonth={getMonth} fullTime={true}/>
+
+            <Heading title={t("nav.awards")}/>
+            <AwardTimeline items={awardItems}/>
+           
+                    
+            
 
             <Heading title={t("nav.skills")}/>
             <div class="flex flex-row flex-wrap gap-2 mb-12 sm:mb-16">
