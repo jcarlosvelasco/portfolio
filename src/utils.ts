@@ -10,5 +10,6 @@ export const skillItems = [
 	"Compose",
 	"Node.js",
 	"Kotlin",
-	"Java"
+	"Java",
+	"Xamarin"
 ]
