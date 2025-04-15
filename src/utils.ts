@@ -11,5 +11,6 @@ export const skillItems = [
 	"Node.js",
 	"Kotlin",
 	"Java",
-	"Xamarin"
+	"Xamarin",
+	"Jupyter Notebook"
 ]
