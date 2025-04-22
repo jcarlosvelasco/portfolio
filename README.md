@@ -1,54 +1,58 @@
-# Astro Starter Kit: Basics
+# Portfolio
 
-```sh
-npm create astro@latest -- --template basics
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+This project is a web application that serves as my personal portfolio, built with modern technologies like Astro, Tailwind CSS, and TypeScript.
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
+```
 /
 ├── public/
-│   └── favicon.svg
+│ └── favicon.svg (and other static assets)
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│ ├── components/
+│ ├── content/
+│ │ ├── awards/
+│ │ ├── education/
+│ │ ├── experience/
+│ │ └── projects/
+│ ├── i18n/
+│ ├── layouts/
+│ └── pages/
+├── tailwind.config.mjs
+└── astro.config.mjs
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 📄 Content
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+The portfolio includes:
 
-Any static assets, like images, can be placed in the `public/` directory.
+-   **Professional Experience**
+-   **Education**
+-   **Projects**
+-   **Awards and Recognitions**
+
+## 🌐 Internationalization
+
+The portfolio features support for multiple languages (Spanish and English), implemented using Astro's internationalization system.
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command           | Action                                        |
+| ----------------- | --------------------------------------------- |
+| `npm install`     | Installs dependencies                         |
+| `npm run dev`     | Starts development server at `localhost:4321` |
+| `npm run build`   | Builds the production site to `./dist/`       |
+| `npm run preview` | Previews the build locally before deploying   |
 
-## 👀 Want to learn more?
+## 💻 Technologies Used
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+-   **Astro**: Web framework for content-driven websites
+-   **Tailwind CSS**: Utility-first CSS framework
+-   **TypeScript**: Static typing for JavaScript
+-   **pnpm**: Efficient package manager
+
+## 📱 Contact
+
+You can find more information about me and my projects on my [GitHub profile](https://github.com/jcarlosvelasco).
